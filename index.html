@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amry Yahya | DevOps Engineer & Infrastructure Architect</title>
+    <meta name="description" content="Personal profile and portfolio of Amry Yahya, a DevOps Engineer specializing in infrastructure automation, cloud platforms, container orchestration, and CI/CD pipelines.">
+    <meta name="keywords" content="Amry Yahya, DevOps Engineer, SysAdmin, Cloud Engineer, Ansible, Docker, Kubernetes, GitLab CI, GCP, Yogyakarta, Indonesia">
+    <meta name="author" content="Amry Yahya">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amryyahya.github.io/">
+    <meta property="og:title" content="Amry Yahya | DevOps Engineer & Infrastructure Architect">
+    <meta property="og:description" content="Personal portfolio of Amry Yahya, showing projects, skills, and work experience in cloud computing and automation.">
+    <meta property="og:image" content="favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amryyahya.github.io/">
+    <meta property="twitter:title" content="Amry Yahya | DevOps Engineer & Infrastructure Architect">
+    <meta property="twitter:description" content="Personal portfolio of Amry Yahya, showing projects, skills, and work experience in cloud computing and automation.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Spotlight Background Element -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-accent">&lt;</span>AmryYahya<span class="logo-accent"> /&gt;</span>
+            </a>
+            <nav class="nav-links" id="nav-links">
+                <a href="#home" class="active" id="nav-home">Home</a>
+                <a href="#about" id="nav-about">About</a>
+                <a href="#skills" id="nav-skills">Skills</a>
+                <a href="#experience" id="nav-experience">Experience</a>
+                <a href="#projects" id="nav-projects">Projects</a>
+                <a href="#education-certs" id="nav-education-certs">Certs & Education</a>
+                <a href="#contact" id="nav-contact">Contact</a>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-grid container">
+            <div class="hero-content">
+                <div class="badge-devops">DevOps & Systems Specialist</div>
+                <h1 class="hero-title">Amry Yahya</h1>
+                <h2 class="hero-subtitle">Automating Operations, Securing Infrastructure, & Scaling Platforms</h2>
+                <p class="hero-description">
+                    A results-driven DevOps Engineer focused on creating reliable, automated, and secure containerized environments. Proven track record in orchestrating cloud infrastructure, accelerating deployment pipelines, and managing complex AI ingestion data layers.
+                </p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/amryyahya" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://github.com/amryyahya" target="_blank" rel="noopener" aria-label="GitHub Profile">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    </a>
+                    <a href="mailto:amryyahya02@gmail.com" aria-label="Email Address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.99 5.74a2 2 0 0 1-2.02 0L2 7"></path></svg>
+                    </a>
+                    <a href="tel:+6285648987748" aria-label="Phone Number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </a>
+                </div>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            
+            <!-- DevOps Terminal UI -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-dot close"></span>
+                        <span class="btn-dot minimize"></span>
+                        <span class="btn-dot expand"></span>
+                    </div>
+                    <div class="terminal-title">bash - guest@amryyahya: ~</div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <!-- Text will be typed dynamically via JS -->
+                    <noscript>
+                        <div class="term-line"><span class="term-prompt">$</span> cat about_me.txt</div>
+                        <div class="term-output">Amry Yahya - DevOps Engineer. Yogyakarta, ID.</div>
+                        <div class="term-line"><span class="term-prompt">$</span> curl -s https://amryyahya.github.io/status</div>
+                        <div class="term-output">
+                            [System Diagnostic Metrics]<br>
+                            - Uptime: 99.9% (Docker Managed)<br>
+                            - Config Management: 100% (Ansible Automation)<br>
+                            - GitLab CI Deployment Frequency: 3x speedup<br>
+                            - Data Ingestion Layer: 215,000+ docs processed<br>
+                        </div>
+                    </noscript>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Performance Metrics Section -->
+    <section class="metrics-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Achievements</h2>
+                <div class="section-divider"></div>
+                <p>Quantifiable operational impacts and engineering metrics delivered across staging and production environments.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">60%</div>
+                    <div class="metric-label">Server Setup Time Reduction</div>
+                    <p class="metric-desc">Automated system provisioning and environment alignment using custom Ansible Playbooks.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3x</div>
+                    <div class="metric-label">Deployment Frequency</div>
+                    <p class="metric-desc">Optimized GitLab CI/CD pipelines to streamline code building, testing, and deployment.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">Service Uptime</div>
+                    <p class="metric-desc">Managed 20+ container instances with Docker and integrated Telegram alerting via Uptime Kuma.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">215K+</div>
+                    <div class="metric-label">Ingested Data Documents</div>
+                    <p class="metric-desc">Architected high-performance data ingestion layer for vector/graph RAG AI engine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Dashboard Section (Devops Sysadmin at the Top) -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Expertise</h2>
+                <div class="section-divider"></div>
+                <p>Broad range of engineering languages, automation pipelines, orchestration layers, and cloud infrastructure management.</p>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Group 1: DevOps & SysAdmin (First/Top priority) -->
+                <div class="skills-card highlight-card">
+                    <div class="skills-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+                    </div>
+                    <h3>DevOps & System Administration</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Docker & Compose</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Helm</span>
+                        <span class="skill-tag">GitLab CI/CD</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Linux SysAdmin</span>
+                        <span class="skill-tag">Shell Scripting</span>
+                        <span class="skill-tag">Vim</span>
+                        <span class="skill-tag">Uptime Kuma</span>
+                        <span class="skill-tag">SSL Pinning</span>
+                    </div>
+                </div>
+
+                <!-- Group 2: Cloud Platforms -->
+                <div class="skills-card">
+                    <div class="skills-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                    </div>
+                    <h3>Cloud Platforms</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Google Cloud Platform (GCP)</span>
+                        <span class="skill-tag">Amazon Web Services (AWS)</span>
+                        <span class="skill-tag">Compute Engine</span>
+                        <span class="skill-tag">IAM & SecPolicies</span>
+                        <span class="skill-tag">VPC Networking</span>
+                    </div>
+                </div>
+
+                <!-- Group 3: Automation & AI Infrastructure -->
+                <div class="skills-card">
+                    <div class="skills-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <h3>Automation & Database Layers</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">n8n Workflow</span>
+                        <span class="skill-tag">Gemini-CLI</span>
+                        <span class="skill-tag">Hermes</span>
+                        <span class="skill-tag">Redis (Caching)</span>
+                        <span class="skill-tag">Memgraph (Graph DB)</span>
+                        <span class="skill-tag">Qdrant (Vector DB)</span>
+                        <span class="skill-tag">LightRAG Framework</span>
+                    </div>
+                </div>
+
+                <!-- Group 4: Web & Backend Development -->
+                <div class="skills-card">
+                    <div class="skills-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 6-6-6-6"></path><path d="m6 8-6 6 6 6"></path></svg>
+                    </div>
+                    <h3>Software Engineering</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Laravel (PHP)</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">RabbitMQ</span>
+                        <span class="skill-tag">Istio Service Mesh</span>
+                        <span class="skill-tag">Security Scans (SAST)</span>
+                    </div>
+                </div>
+
+                <!-- Group 5: Languages & Methodologies -->
+                <div class="skills-card">
+                    <div class="skills-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></svg>
+                    </div>
+                    <h3>Languages & Operations</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Indonesian (Native)</span>
+                        <span class="skill-tag">English (Proficient, TOEFL: 567)</span>
+                        <span class="skill-tag">Technical Mentorship</span>
+                        <span class="skill-tag">Agile / Scrum</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Incident Alerting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <div class="section-divider"></div>
+                <p>Professional background details showcasing DevOps and cloud computing roles.</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Role 1 (Junior DevOps Engineer at DSI) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Feb 2025 – Present</div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3>Junior DevOps Engineer</h3>
+                            <span class="company">Digital Sekuriti Indonesia</span>
+                        </div>
+                        <p class="job-meta">Yogyakarta, Indonesia | Full-time</p>
+                        <ul class="job-duties">
+                            <li><strong>Automated infrastructure provisioning</strong> and configuration management using Ansible, reducing manual server setup time by <strong>60%</strong> and ensuring 100% configuration consistency across environments.</li>
+                            <li><strong>Streamlined GitLab CI/CD workflows</strong> to automate build, test, and deployment phases, increasing deployment frequency by <strong>3x</strong> and reducing production lead time from hours to minutes.</li>
+                            <li><strong>Managed containerized environments</strong> for 20+ instances using Docker and Docker Compose, achieving a <strong>99.9% uptime</strong> rate.</li>
+                            <li><strong>Standardized security protocols</strong> by implementing Centralized Scan Execution Policies in GitLab CI, integrating SAST, SonarQube, and IaC scanning alongside an automated vulnerability reporting system to streamline remediation.</li>
+                            <li><strong>Deployed Uptime Kuma</strong> to monitor service availability across 20+ containerized instances, implementing multi-channel alerting (Telegram) to ensure immediate incident awareness.</li>
+                        </ul>
+                        <div class="job-tags">
+                            <span class="tag">Ansible</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">GitLab CI/CD</span>
+                            <span class="tag">SAST</span>
+                            <span class="tag">SonarQube</span>
+                            <span class="tag">Uptime Kuma</span>
+                            <span class="tag">Telegram Alerts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 2 (Cloud Computing Mentor) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Feb 2024 – Jul 2024</div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3>Cloud Computing Mentor</h3>
+                            <span class="company">Bangkit Academy</span>
+                        </div>
+                        <p class="job-meta">Remote | Cohort CC-45</p>
+                        <ul class="job-duties">
+                            <li>Guided and monitored 25 students through their Cloud Computing learning path.</li>
+                            <li>Conducted 19 weekly consultations, providing technical support and academic guidance.</li>
+                            <li>Assisted in 14 instructor-led training (ILT) sessions to reinforce cloud concepts and architectural patterns.</li>
+                        </ul>
+                        <div class="job-tags">
+                            <span class="tag">GCP</span>
+                            <span class="tag">Cloud Architecture</span>
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Technical Consult</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 3 (Cloud Computing Student) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Feb 2023 – Jul 2023</div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3>Cloud Computing Student</h3>
+                            <span class="company">Bangkit Academy led by Google, GoTo, & Traveloka</span>
+                        </div>
+                        <p class="job-meta">Remote | Specialized Academy</p>
+                        <ul class="job-duties">
+                            <li>Completed intensive training in cloud infrastructure, container services, Linux administration, and API backends.</li>
+                            <li>Successfully completed a Capstone Project implementing scalable APIs hosted on GCP container engines.</li>
+                        </ul>
+                        <div class="job-tags">
+                            <span class="tag">GCP</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 4 (Web Developer Intern) -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Oct 2022 – Jan 2023</div>
+                    <div class="timeline-content">
+                        <div class="job-header">
+                            <h3>Web Developer Intern</h3>
+                            <span class="company">OKE Garden</span>
+                        </div>
+                        <p class="job-meta">Remote | Internship</p>
+                        <ul class="job-duties">
+                            <li>Developed secure user authentication, login, and profile registration workflows using Laravel.</li>
+                            <li>Integrated UI components with relational databases, participating in weekly sprint review and optimization meetings.</li>
+                        </ul>
+                        <div class="job-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Web Security</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (DevOps & Sysadmin at the top) -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <div class="section-divider"></div>
+                <p>Engineering portfolios highlighting infrastructure orchestration, security configurations, and advanced system design.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all" id="filter-all">All Projects</button>
+                <button class="filter-btn" data-filter="devops" id="filter-devops">DevOps & Infrastructure</button>
+                <button class="filter-btn" data-filter="security" id="filter-security">Security & Core APIs</button>
+                <button class="filter-btn" data-filter="ai-data" id="filter-ai">AI & Data Layers</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Project 1: Torcons AI (DevOps / AI & Data) -->
+                <div class="project-card" data-category="devops ai-data">
+                    <div class="project-card-header">
+                        <span class="project-tag">DevOps / AI Data</span>
+                        <div class="project-date">Aug 2025 – Now</div>
+                    </div>
+                    <h3>Torcons AI</h3>
+                    <p class="project-association">Digital Sekuriti Indonesia</p>
+                    <p class="project-desc">
+                        Developed a high-performance data ingestion layer, successfully indexing 215,000+ documents to provide low-latency context for AI responses. Integrated Redis, Memgraph, and Qdrant into the LightRAG framework; reduced query latency and automated stateful data migrations for database recovery (restored a 7GB database with zero data loss).
+                    </p>
+                    <div class="project-tech">
+                        <span>LightRAG</span>
+                        <span>Redis</span>
+                        <span>Memgraph</span>
+                        <span>Qdrant</span>
+                        <span>Data Migration</span>
+                    </div>
+                    <!-- Actions -->
+                    <div class="project-links">
+                        <span class="proj-badge">Enterprise Project</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Callink (DevOps / Security) -->
+                <div class="project-card" data-category="devops security">
+                    <div class="project-card-header">
+                        <span class="project-tag">Infrastructure / Security</span>
+                        <div class="project-date">Feb 2025 – Now</div>
+                    </div>
+                    <h3>Callink</h3>
+                    <p class="project-association">Digital Sekuriti Indonesia</p>
+                    <p class="project-desc">
+                        Optimized backend infrastructure for secure, decentralized Matrix messaging services (Synapse & AdminUI). Configured Sygnal Push Gateway to deliver real-time mobile notifications with &lt;150ms latency. Managed client-side certificate (.crt) distribution and SSL Pinning to eliminate Man-in-the-Middle (MITM) attacks.
+                    </p>
+                    <div class="project-tech">
+                        <span>Synapse (Matrix)</span>
+                        <span>Sygnal Gateway</span>
+                        <span>SSL Pinning</span>
+                        <span>Cert Distribution</span>
+                        <span>Network Security</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="proj-badge">Enterprise Infrastructure</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Web App 2FA (Security) -->
+                <div class="project-card" data-category="security">
+                    <div class="project-card-header">
+                        <span class="project-tag">Security / Research</span>
+                        <div class="project-date">Jan 2024 – Apr 2024</div>
+                    </div>
+                    <h3>Web App 2FA</h3>
+                    <p class="project-association">University of Brawijaya</p>
+                    <p class="project-desc">
+                        Designed and implemented an advanced authentication system utilizing Time-based One-Time Password (TOTP) algorithms. Replaced the traditional SHA-1 hashing standard with Photon Hash to secure credentials and resist cryptanalytic side-channel vulnerabilities.
+                    </p>
+                    <div class="project-tech">
+                        <span>Cryptography</span>
+                        <span>Photon Hash</span>
+                        <span>TOTP</span>
+                        <span>2FA Auth</span>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amryyahya/web-app-2fa" target="_blank" rel="noopener" class="project-link-btn">
+                            View Code
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Medsafe Cycle API (Security / Backend) -->
+                <div class="project-card" data-category="security">
+                    <div class="project-card-header">
+                        <span class="project-tag">Backend / Cloud</span>
+                        <div class="project-date">May 2023 – Jun 2023</div>
+                    </div>
+                    <h3>Medsafe Cycle API</h3>
+                    <p class="project-association">Bangkit Academy Capstone</p>
+                    <p class="project-desc">
+                        Built the backend REST API engine for Medsafe Cycle, a mobile app aiding medical professionals in classifying medical waste. Developed and deployed modular services on GCP compute services, ensuring fast throughput and scalable JSON communications.
+                    </p>
+                    <div class="project-tech">
+                        <span>REST API</span>
+                        <span>Express.js</span>
+                        <span>GCP</span>
+                        <span>App Engine</span>
+                        <span>SQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amryyahya/medsafecycle-api" target="_blank" rel="noopener" class="project-link-btn">
+                            View Code
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section class="education-certs-section" id="education-certs">
+        <div class="container">
+            <div class="edu-certs-grid">
+                
+                <!-- Left: Education -->
+                <div class="education-column">
+                    <div class="section-header align-left">
+                        <h2>Education</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                        </div>
+                        <div class="edu-details">
+                            <h3>Bachelor of Computer Science</h3>
+                            <h4>University of Brawijaya</h4>
+                            <p class="edu-meta">Malang, East Java | Sept 2020 – July 2024</p>
+                            <p class="edu-grade"><strong>Cumulative GPA:</strong> 3.83 / 4.0</p>
+                            <div class="edu-coursework">
+                                <h5>Relevant Coursework:</h5>
+                                <ul>
+                                    <li>Cloud Computing</li>
+                                    <li>Server System Administration</li>
+                                    <li>Computer Network</li>
+                                    <li>Network Administration and Management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Certifications -->
+                <div class="certs-column">
+                    <div class="section-header align-left">
+                        <h2>Certifications</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div class="certs-list">
+                        <!-- Cert 1: Google ACE -->
+                        <div class="cert-item highlight-cert">
+                            <div class="cert-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                            </div>
+                            <div class="cert-details">
+                                <h3>Google Associate Cloud Engineer</h3>
+                                <p class="cert-issuer">Google | Verification Available</p>
+                                <a href="https://www.credly.com/badges/359cf26d-31bf-4421-a1bd-f008edc738d1" target="_blank" rel="noopener" class="cert-badge-link">
+                                    Verify Credential
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Cert 2: ML on GCP -->
+                        <div class="cert-item">
+                            <div class="cert-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path></svg>
+                            </div>
+                            <div class="cert-details">
+                                <h3>Machine Learning with Google Cloud</h3>
+                                <p class="cert-issuer">Dicoding Indonesia | May 2024 – May 2027</p>
+                                <a href="https://www.dicoding.com/certificates/4EXGQQRJ1ZRL" target="_blank" rel="noopener" class="cert-badge-link">
+                                    Verify
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Cert 3: Microservices Architecture -->
+                        <div class="cert-item">
+                            <div class="cert-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="2" y="2" rx="2"></rect><rect width="8" height="8" x="14" y="14" rx="2"></rect><path d="M20 10V6a2 2 0 0 0-2-2h-4M4 14v4a2 2 0 0 0 2 2h4"></path></svg>
+                            </div>
+                            <div class="cert-details">
+                                <h3>Microservices Architecture</h3>
+                                <p class="cert-issuer">Dicoding Indonesia | Nov 2023 – Nov 2026</p>
+                                <a href="https://www.dicoding.com/certificates/4EXG4029DPRL" target="_blank" rel="noopener" class="cert-badge-link">
+                                    Verify
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <div class="section-divider"></div>
+                <p>Feel free to reach out for project collaborations, operations consultation, or recruitment opportunities.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Info cards -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Yogyakarta, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.99 5.74a2 2 0 0 1-2.02 0L2 7"></path></svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:amryyahya02@gmail.com">amryyahya02@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+6285648987748">+62 856 4898 7748</a></p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://linkedin.com/in/amryyahya" target="_blank" rel="noopener">linkedin.com/in/amryyahya</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/xoqydlno" method="POST" class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="_replyto" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Collaboration Opportunity">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Describe your project, timeline, and requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Amry Yahya. Built with speed, security, and automation in mind.</p>
+            <div class="footer-meta">
+                <span>Infrastructure: DevOps Driven</span>
+                <span class="dot-separator">•</span>
+                <span>Config: 100% Ansible Consistency</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
