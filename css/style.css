@@ -92,15 +92,55 @@
 [data-theme="light"] .skill-tag,
 [data-theme="light"] .project-tech span,
 [data-theme="light"] .job-tags .tag {
-    background: rgba(241, 245, 249, 0.9);
-    border-color: rgba(203, 213, 225, 0.8);
+    background: #e2e8f0;
+    color: #334155;
+    border-color: #cbd5e1;
 }
 
 [data-theme="light"] .btn-secondary:hover,
 [data-theme="light"] .social-links a:hover,
 [data-theme="light"] .filter-btn:hover {
-    background: rgba(226, 232, 240, 0.95);
+    background: #cbd5e1;
     border-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+/* Light Theme Icon Containers */
+[data-theme="light"] .skills-card-icon,
+[data-theme="light"] .cert-icon,
+[data-theme="light"] .edu-icon,
+[data-theme="light"] .info-icon {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--accent-blue);
+    border-color: rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="light"] .skills-card.highlight-card {
+    background: rgba(239, 246, 255, 0.8);
+    border-color: rgba(147, 197, 253, 0.8);
+}
+
+[data-theme="light"] .skills-card.highlight-card .skills-card-icon {
+    background: rgba(37, 99, 235, 0.18);
+    color: #1d4ed8;
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+[data-theme="light"] .skills-card.highlight-card .skill-tag {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.2);
+    color: #1e40af;
+}
+
+[data-theme="light"] .cert-item.highlight-cert {
+    background: rgba(236, 253, 245, 0.8);
+    border-color: rgba(167, 243, 208, 0.8);
+}
+
+[data-theme="light"] .cert-item.highlight-cert .cert-icon {
+    background: rgba(5, 150, 105, 0.15);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.3);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track {
@@ -113,11 +153,6 @@
 
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
-}
-
-[data-theme="light"] .skills-card.highlight-card {
-    background: rgba(239, 246, 255, 0.7);
-    border-color: rgba(147, 197, 253, 0.6);
 }
 
 /* ==========================================================================
@@ -493,22 +528,28 @@ li {
 
 /* Interactive DevOps Terminal UI */
 .terminal-container {
-    background: #060913;
-    border: 1px solid #1e293b;
+    background: #090d16;
+    border: 1px solid rgba(59, 130, 246, 0.25);
     border-radius: var(--radius-lg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), var(--shadow-glow);
     overflow: hidden;
     height: 380px;
     display: flex;
     flex-direction: column;
 }
 
-.terminal-header {
+[data-theme="light"] .terminal-container {
     background: #0f172a;
+    border-color: rgba(37, 99, 235, 0.25);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15), 0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+.terminal-header {
+    background: #1e293b;
     padding: 12px 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-buttons {
@@ -530,7 +571,7 @@ li {
     margin-left: 20px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: #94a3b8 !important;
 }
 
 .terminal-body {
@@ -538,28 +579,29 @@ li {
     padding: 24px;
     font-family: var(--font-mono);
     font-size: 0.88rem;
-    color: var(--text-primary);
+    color: #f8fafc !important;
     overflow-y: auto;
     line-height: 1.7;
 }
 
 .term-line {
     margin-bottom: 8px;
+    color: #f8fafc !important;
 }
 
 .term-prompt {
-    color: var(--accent-teal);
+    color: #34d399 !important;
     font-weight: 700;
 }
 
 .term-output {
-    color: var(--text-secondary);
+    color: #cbd5e1 !important;
     margin-bottom: 16px;
     white-space: pre-line;
 }
 
 .term-output-highlight {
-    color: var(--text-primary);
+    color: #ffffff !important;
     font-weight: bold;
 }
 
@@ -567,7 +609,7 @@ li {
     display: inline-block;
     width: 8px;
     height: 15px;
-    background: var(--text-primary);
+    background: #38bdf8 !important;
     margin-left: 4px;
     vertical-align: middle;
     animation: blink 1s step-end infinite;
