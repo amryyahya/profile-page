@@ -250,4 +250,29 @@ dsi-prod-01                : ok=4    changed=0    unreachable=0    failed=0   ` 
             }
         });
     }
+
+    // ==========================================================================
+    // 7. Light / Dark Theme Switcher
+    // ==========================================================================
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    
+    // Check saved preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (systemPrefersLight) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
 });
