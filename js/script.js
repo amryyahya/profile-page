@@ -1,73 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Mouse Sparkle Trail Effect
-    const sparkleContainer = document.getElementById('sparkle-container');
-    let lastSparkleTime = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - lastSparkleTime > 40) { // Throttled mouse trail
-            lastSparkleTime = now;
-            const sparkle = document.createElement('div');
-            sparkle.className = 'star-sparkle';
-            sparkle.style.left = `${e.clientX}px`;
-            sparkle.style.top = `${e.clientY}px`;
-            
-            // Random neon colors for sparkles
-            const colors = ['#00ffff', '#ff00ff', '#00ff00', '#ffff00'];
-            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            if (sparkleContainer) {
-                sparkleContainer.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 800);
-            }
-        }
-    });
-
-    // 2. Mobile Menu Toggle
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navLinks = document.getElementById('nav-links');
-    if (mobileToggle && navLinks) {
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    // ==========================================================================
+    // 1. Mouse Spotlight Cursor Glow Effect
+    // ==========================================================================
+    const cursorGlow = document.getElementById('cursor-glow');
+    
+    if (cursorGlow) {
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = `${e.clientX}px`;
+            cursorGlow.style.top = `${e.clientY}px`;
         });
     }
 
-    // 3. Winamp Media Player Controls Simulation
-    const winampPlay = document.getElementById('winamp-play');
-    const winampPause = document.getElementById('winamp-pause');
-    const winampStop = document.getElementById('winamp-stop');
-    const winampStatus = document.getElementById('winamp-status');
+    // ==========================================================================
+    // 2. Mobile Menu Toggle
+    // ==========================================================================
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const navItems = navLinks ? navLinks.querySelectorAll('a') : [];
 
-    if (winampStatus) {
-        if (winampPlay) {
-            winampPlay.addEventListener('click', () => {
-                winampStatus.textContent = '[PLAYING 03:12]';
-                winampStatus.style.color = '#00ff00';
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
             });
-        }
-        if (winampPause) {
-            winampPause.addEventListener('click', () => {
-                winampStatus.textContent = '[PAUSED]';
-                winampStatus.style.color = '#ffff00';
-            });
-        }
-        if (winampStop) {
-            winampStop.addEventListener('click', () => {
-                winampStatus.textContent = '[STOPPED]';
-                winampStatus.style.color = '#ff0055';
-            });
-        }
+        });
     }
 
-    // 4. Hit Counter Logic
-    const hitCounterEl = document.getElementById('hit-counter');
-    if (hitCounterEl) {
-        let count = 9482 + (Math.floor(Date.now() / 80000) % 300);
-        hitCounterEl.textContent = String(count).padStart(6, '0');
-    }
+    // ==========================================================================
+    // 3. ScrollSpy & Sticky Header
+    // ==========================================================================
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section');
+    
+    window.addEventListener('scroll', () => {
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
 
-    // 5. Project Filters
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < (sectionTop + sectionHeight)) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${currentSectionId}`) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 4. Interactive Projects / Stacks Filter
+    // ==========================================================================
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -83,6 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (filterValue === 'all' || categories.includes(filterValue)) {
                     card.classList.remove('hidden');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    }, 50);
                 } else {
                     card.classList.add('hidden');
                 }
@@ -90,27 +99,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Matrix Terminal Typing Simulation
+    // ==========================================================================
+    // 5. AWS CloudShell Interactive CLI typing simulation
+    // ==========================================================================
     const terminalBody = document.getElementById('terminal-body');
 
     if (terminalBody) {
-        terminalBody.innerHTML = '';
+        terminalBody.innerHTML = ''; // Clear noscript fallback
 
         const terminalScript = [
-            { type: 'input', text: './init_geocities_cyber.sh --user amryyahya' },
-            { type: 'output', text: '*** GEOCITIES CYBER DEVOPS SYSTEM ONLINE ***' },
-            { type: 'wait', ms: 500 },
+            { type: 'input', text: 'aws sts get-caller-identity' },
+            { type: 'output', text: `<span class="highlight-val">{</span><br>&nbsp;&nbsp;<span class="highlight-val">"UserId":</span> "AMRY-DEVOPS-ENGINEER",<br>&nbsp;&nbsp;<span class="highlight-val">"Account":</span> "987654321012",<br>&nbsp;&nbsp;<span class="highlight-val">"Arn":</span> "arn:aws:iam::root:user/amryyahya",<br>&nbsp;&nbsp;<span class="highlight-val">"Region":</span> "ap-southeast-1 (Yogyakarta, ID)"<br><span class="highlight-val">}</span>` },
+            { type: 'wait', ms: 600 },
             
-            { type: 'input', text: 'cat stats.txt' },
-            { type: 'output', text: `&gt; ANSIBLE AUTOMATION: 60% Setup Time Reduction<br>&gt; GITLAB CI SPEED: 3x Deployment Acceleration<br>&gt; DOCKER UPTIME: 99.9% Availability<br>&gt; AI INGESTION LAYER: 215,000+ Docs Processed` },
+            { type: 'input', text: 'aws cloudwatch get-metric-data --metric-name HealthCheck' },
+            { type: 'output', text: `[Metrics Evaluation]:<br>- <span class="success-val">Ansible Automation:</span> 60% Server Provisioning Time Reduction<br>- <span class="success-val">GitLab CI Speed:</span> 3x Acceleration in Build & Deploy Frequency<br>- <span class="success-val">Container Uptime:</span> 99.9% Availability across 20+ Instances<br>- <span class="success-val">Data Ingestion:</span> 215,000+ AI Documents Indexed (Redis, Memgraph, Qdrant)` },
             { type: 'wait', ms: 800 },
             
-            { type: 'input', text: 'ansible-playbook check_status.yml' },
-            { type: 'output', text: `PLAY [Verify DevOps Cyber Environment] *****************<br>TASK [Gathering Facts] ok: [dsi-prod-01]<br>TASK [Check Nginx & SSL Pinning] ok: [dsi-prod-01]<br>RECAP: dsi-prod-01 : ok=2 changed=0 failed=0` },
+            { type: 'input', text: 'ansible-playbook -i production check_stack_health.yml' },
+            { type: 'output', text: `PLAY [Verify AWS Infrastructure & Container Health] ********************<br><br>TASK [Gathering Facts] *************************************************<br>ok: [dsi-prod-01]<br><br>TASK [Check Nginx & SSL Certificate Pinning] ***************************<br>ok: [dsi-prod-01] => {"ssl_status": "VALID", "mitm_protection": "ENABLED"}<br><br>TASK [Verify Telegram Alerting via Uptime Kuma] ************************<br>ok: [dsi-prod-01] => {"status": "ONLINE", "containers": 20}<br><br>PLAY RECAP *************************************************************<br>dsi-prod-01 : ok=3 changed=0 unreachable=0 failed=0` },
             { type: 'wait', ms: 1000 },
             
-            { type: 'input', text: 'echo "READY TO AUTOMATE INFRASTRUCTURE."' },
-            { type: 'output', text: '*** READY TO AUTOMATE INFRASTRUCTURE ***' },
+            { type: 'input', text: 'echo "AWS Cloud & DevOps Platform Operational."' },
+            { type: 'output', text: '<span class="success-val">AWS Cloud & DevOps Platform Operational.</span>' },
             { type: 'wait', ms: 2500 }
         ];
 
@@ -124,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         const prompt = document.createElement('span');
                         prompt.className = 'term-prompt';
-                        prompt.textContent = 'amry@cyber-matrix:~$ ';
+                        prompt.textContent = '[cloudshell-user@aws ~]$ ';
                         line.appendChild(prompt);
                         
                         const cmdText = document.createElement('span');
@@ -139,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         for (let i = 0; i < step.text.length; i++) {
                             cmdText.textContent += step.text[i];
-                            await new Promise(r => setTimeout(r, 40 + Math.random() * 30));
+                            await new Promise(r => setTimeout(r, 45 + Math.random() * 35));
                         }
                         
                         caret.remove();
@@ -164,7 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
         runTerminalSimulation();
     }
 
-    // 7. Formspree Contact Form
+    // ==========================================================================
+    // 6. Formspree Contact Form Submission Handling
+    // ==========================================================================
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -175,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.style.display = 'none';
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = '[ TRANSMITTING... ]';
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.textContent = 'Submitting Support Case...';
             submitBtn.disabled = true;
 
             const data = new FormData(contactForm);
@@ -185,23 +198,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(contactForm.action, {
                     method: contactForm.method,
                     body: data,
-                    headers: { 'Accept': 'application/json' }
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
                 
                 if (response.ok) {
-                    formStatus.textContent = "Transmission Received! Thank you. I will respond shortly.";
-                    formStatus.style.color = '#00ff00';
+                    formStatus.textContent = "Support Case Created Successfully! Thank you for reaching out. I will respond to your case shortly.";
+                    formStatus.className = 'success';
                     contactForm.reset();
                 } else {
-                    formStatus.textContent = "Error sending transmission. Please try again.";
-                    formStatus.style.color = '#ff0055';
+                    const responseData = await response.json();
+                    if (responseData.errors) {
+                        formStatus.textContent = responseData.errors.map(error => error.message).join(", ");
+                    } else {
+                        formStatus.textContent = "Unable to create support case. Please verify your details and try again.";
+                    }
+                    formStatus.className = 'error';
                 }
             } catch (error) {
-                formStatus.textContent = "Connection error. Please try again.";
-                formStatus.style.color = '#ff0055';
+                formStatus.textContent = "Network connection error. Please verify your connection and try submitting again.";
+                formStatus.className = 'error';
             } finally {
                 formStatus.style.display = 'block';
-                submitBtn.textContent = originalBtnText;
+                submitBtn.innerHTML = originalBtnHtml;
                 submitBtn.disabled = false;
             }
         });
