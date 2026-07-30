@@ -1,13 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Cursor Glow
-    const cursorGlow = document.getElementById('cursor-glow');
-    if (cursorGlow) {
-        document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = `${e.clientX}px`;
-            cursorGlow.style.top = `${e.clientY}px`;
-        });
-    }
+    // 1. Mouse Sparkle Trail Effect
+    const sparkleContainer = document.getElementById('sparkle-container');
+    let lastSparkleTime = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastSparkleTime > 40) { // Throttled mouse trail
+            lastSparkleTime = now;
+            const sparkle = document.createElement('div');
+            sparkle.className = 'star-sparkle';
+            sparkle.style.left = `${e.clientX}px`;
+            sparkle.style.top = `${e.clientY}px`;
+            
+            // Random neon colors for sparkles
+            const colors = ['#00ffff', '#ff00ff', '#00ff00', '#ffff00'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            if (sparkleContainer) {
+                sparkleContainer.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            }
+        }
+    });
 
     // 2. Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobile-toggle');
@@ -18,16 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Digital Visitor Counter Increment Simulation
-    const visitorCountEl = document.getElementById('visitor-count');
-    if (visitorCountEl) {
-        let baseCount = 4829;
-        // Increment count based on current timestamp
-        let currentCount = baseCount + (Math.floor(Date.now() / 100000) % 500);
-        visitorCountEl.textContent = String(currentCount).padStart(6, '0');
+    // 3. Winamp Media Player Controls Simulation
+    const winampPlay = document.getElementById('winamp-play');
+    const winampPause = document.getElementById('winamp-pause');
+    const winampStop = document.getElementById('winamp-stop');
+    const winampStatus = document.getElementById('winamp-status');
+
+    if (winampStatus) {
+        if (winampPlay) {
+            winampPlay.addEventListener('click', () => {
+                winampStatus.textContent = '[PLAYING 03:12]';
+                winampStatus.style.color = '#00ff00';
+            });
+        }
+        if (winampPause) {
+            winampPause.addEventListener('click', () => {
+                winampStatus.textContent = '[PAUSED]';
+                winampStatus.style.color = '#ffff00';
+            });
+        }
+        if (winampStop) {
+            winampStop.addEventListener('click', () => {
+                winampStatus.textContent = '[STOPPED]';
+                winampStatus.style.color = '#ff0055';
+            });
+        }
     }
 
-    // 4. Project Filters
+    // 4. Hit Counter Logic
+    const hitCounterEl = document.getElementById('hit-counter');
+    if (hitCounterEl) {
+        let count = 9482 + (Math.floor(Date.now() / 80000) % 300);
+        hitCounterEl.textContent = String(count).padStart(6, '0');
+    }
+
+    // 5. Project Filters
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -50,27 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Matrix Terminal Typing Simulation
+    // 6. Matrix Terminal Typing Simulation
     const terminalBody = document.getElementById('terminal-body');
 
     if (terminalBody) {
-        terminalBody.innerHTML = ''; // Clear fallback
+        terminalBody.innerHTML = '';
 
         const terminalScript = [
-            { type: 'input', text: './init_matrix.sh --user amryyahya' },
-            { type: 'output', text: '[SYSTEM OK] Initializing Cyber DevOps Core...' },
+            { type: 'input', text: './init_geocities_cyber.sh --user amryyahya' },
+            { type: 'output', text: '*** GEOCITIES CYBER DEVOPS SYSTEM ONLINE ***' },
             { type: 'wait', ms: 500 },
             
-            { type: 'input', text: 'cat stats.log' },
-            { type: 'output', text: `> ANSIBLE_AUTOMATION: 60% Setup Time Reduction<br>&gt; GITLAB_CICD_SPEED: 3x Deployment Speedup<br>&gt; DOCKER_CONTAINER_UPTIME: 99.9% Availability<br>&gt; AI_DATA_LAYER: 215,000+ Ingested Documents` },
+            { type: 'input', text: 'cat stats.txt' },
+            { type: 'output', text: `&gt; ANSIBLE AUTOMATION: 60% Setup Time Reduction<br>&gt; GITLAB CI SPEED: 3x Deployment Acceleration<br>&gt; DOCKER UPTIME: 99.9% Availability<br>&gt; AI INGESTION LAYER: 215,000+ Docs Processed` },
             { type: 'wait', ms: 800 },
             
-            { type: 'input', text: 'ansible-playbook check_infra.yml' },
-            { type: 'output', text: `PLAY [Verify DevOps Cyber Environment] *****************<br>TASK [Gathering Facts] ok: [dsi-prod-01]<br>TASK [Check Nginx & SSL Pinning] ok: [dsi-prod-01]<br>TASK [Check Uptime Kuma] ok: [dsi-prod-01]<br>RECAP: dsi-prod-01 : ok=3 changed=0 failed=0` },
+            { type: 'input', text: 'ansible-playbook check_status.yml' },
+            { type: 'output', text: `PLAY [Verify DevOps Cyber Environment] *****************<br>TASK [Gathering Facts] ok: [dsi-prod-01]<br>TASK [Check Nginx & SSL Pinning] ok: [dsi-prod-01]<br>RECAP: dsi-prod-01 : ok=2 changed=0 failed=0` },
             { type: 'wait', ms: 1000 },
             
-            { type: 'input', text: 'echo "SYSTEM ONLINE AND READY."' },
-            { type: 'output', text: '*** SYSTEM ONLINE AND READY ***' },
+            { type: 'input', text: 'echo "READY TO AUTOMATE INFRASTRUCTURE."' },
+            { type: 'output', text: '*** READY TO AUTOMATE INFRASTRUCTURE ***' },
             { type: 'wait', ms: 2500 }
         ];
 
@@ -99,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         for (let i = 0; i < step.text.length; i++) {
                             cmdText.textContent += step.text[i];
-                            await new Promise(r => setTimeout(r, 45 + Math.random() * 30));
+                            await new Promise(r => setTimeout(r, 40 + Math.random() * 30));
                         }
                         
                         caret.remove();
@@ -124,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         runTerminalSimulation();
     }
 
-    // 6. Formspree Contact Form
+    // 7. Formspree Contact Form
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -150,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (response.ok) {
                     formStatus.textContent = "Transmission Received! Thank you. I will respond shortly.";
-                    formStatus.style.color = '#00ff66';
+                    formStatus.style.color = '#00ff00';
                     contactForm.reset();
                 } else {
                     formStatus.textContent = "Error sending transmission. Please try again.";
