@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 4. Interactive Projects / Stacks Filter
+    // 4. Interactive Projects Filter
     // ==========================================================================
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 5. AWS CloudShell Interactive CLI typing simulation
+    // 5. DevOps Interactive Terminal Mockup typing simulation
     // ==========================================================================
     const terminalBody = document.getElementById('terminal-body');
 
@@ -108,20 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
         terminalBody.innerHTML = ''; // Clear noscript fallback
 
         const terminalScript = [
-            { type: 'input', text: 'aws sts get-caller-identity' },
-            { type: 'output', text: `<span class="highlight-val">{</span><br>&nbsp;&nbsp;<span class="highlight-val">"UserId":</span> "AMRY-DEVOPS-ENGINEER",<br>&nbsp;&nbsp;<span class="highlight-val">"Account":</span> "987654321012",<br>&nbsp;&nbsp;<span class="highlight-val">"Arn":</span> "arn:aws:iam::root:user/amryyahya",<br>&nbsp;&nbsp;<span class="highlight-val">"Region":</span> "ap-southeast-1 (Yogyakarta, ID)"<br><span class="highlight-val">}</span>` },
-            { type: 'wait', ms: 600 },
+            { type: 'input', text: 'whoami' },
+            { type: 'output', text: '<span class="highlight-val">amryyahya</span> - DevOps & Cloud Infrastructure Architect' },
+            { type: 'wait', ms: 500 },
             
-            { type: 'input', text: 'aws cloudwatch get-metric-data --metric-name HealthCheck' },
-            { type: 'output', text: `[Metrics Evaluation]:<br>- <span class="success-val">Ansible Automation:</span> 60% Server Provisioning Time Reduction<br>- <span class="success-val">GitLab CI Speed:</span> 3x Acceleration in Build & Deploy Frequency<br>- <span class="success-val">Container Uptime:</span> 99.9% Availability across 20+ Instances<br>- <span class="success-val">Data Ingestion:</span> 215,000+ AI Documents Indexed (Redis, Memgraph, Qdrant)` },
+            { type: 'input', text: 'cat stats.yaml' },
+            { type: 'output', text: `---<br><span class="highlight-val">engineer:</span><br>&nbsp;&nbsp;name: Amry Yahya<br>&nbsp;&nbsp;role: DevOps Engineer<br>&nbsp;&nbsp;location: Yogyakarta, Indonesia<br><span class="highlight-val">key_impact:</span><br>&nbsp;&nbsp;ansible_automation: <span class="success-val">"Server setup time reduced by 60%"</span><br>&nbsp;&nbsp;gitlab_cicd_speed: <span class="success-val">"3x deployment frequency acceleration"</span><br>&nbsp;&nbsp;docker_compose_uptime: <span class="success-val">"99.9% availability across 20+ instances"</span><br>&nbsp;&nbsp;ai_data_ingest: <span class="success-val">"Indexed 215,000+ docs (Redis, Memgraph, Qdrant)"</span>` },
             { type: 'wait', ms: 800 },
             
-            { type: 'input', text: 'ansible-playbook -i production check_stack_health.yml' },
-            { type: 'output', text: `PLAY [Verify AWS Infrastructure & Container Health] ********************<br><br>TASK [Gathering Facts] *************************************************<br>ok: [dsi-prod-01]<br><br>TASK [Check Nginx & SSL Certificate Pinning] ***************************<br>ok: [dsi-prod-01] => {"ssl_status": "VALID", "mitm_protection": "ENABLED"}<br><br>TASK [Verify Telegram Alerting via Uptime Kuma] ************************<br>ok: [dsi-prod-01] => {"status": "ONLINE", "containers": 20}<br><br>PLAY RECAP *************************************************************<br>dsi-prod-01 : ok=3 changed=0 unreachable=0 failed=0` },
+            { type: 'input', text: 'ansible-playbook check_infra.yml' },
+            { type: 'output', text: `PLAY [Check DevOps Environment Health] *****************************************<br><br>TASK [Gathering Facts] *********************************************************<br>ok: [dsi-prod-01]<br><br>TASK [Check Nginx & SSL Certificate Pinning] ***********************************<br>ok: [dsi-prod-01] => {"ssl_status": "Valid", "mitm_protection": "Enabled"}<br><br>TASK [Verify Telegram Alerting via Uptime Kuma] ********************************<br>ok: [dsi-prod-01] => {"status": "ONLINE", "monitored_containers": 20}<br><br>PLAY RECAP *********************************************************************<br>dsi-prod-01 : ok=3 changed=0 unreachable=0 failed=0` },
             { type: 'wait', ms: 1000 },
             
-            { type: 'input', text: 'echo "AWS Cloud & DevOps Platform Operational."' },
-            { type: 'output', text: '<span class="success-val">AWS Cloud & DevOps Platform Operational.</span>' },
+            { type: 'input', text: 'echo "Infrastructure automated and operational."' },
+            { type: 'output', text: '<span class="success-val">Infrastructure automated and operational.</span>' },
             { type: 'wait', ms: 2500 }
         ];
 
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         const prompt = document.createElement('span');
                         prompt.className = 'term-prompt';
-                        prompt.textContent = '[cloudshell-user@aws ~]$ ';
+                        prompt.textContent = 'guest@amryyahya:~$ ';
                         line.appendChild(prompt);
                         
                         const cmdText = document.createElement('span');
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         for (let i = 0; i < step.text.length; i++) {
                             cmdText.textContent += step.text[i];
-                            await new Promise(r => setTimeout(r, 45 + Math.random() * 35));
+                            await new Promise(r => setTimeout(r, 50 + Math.random() * 30));
                         }
                         
                         caret.remove();
@@ -188,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.style.display = 'none';
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnHtml = submitBtn.innerHTML;
-            submitBtn.textContent = 'Submitting Support Case...';
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending Message...';
             submitBtn.disabled = true;
 
             const data = new FormData(contactForm);
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 if (response.ok) {
-                    formStatus.textContent = "Support Case Created Successfully! Thank you for reaching out. I will respond to your case shortly.";
+                    formStatus.textContent = "Thank you! Your message has been sent successfully. I will get back to you shortly.";
                     formStatus.className = 'success';
                     contactForm.reset();
                 } else {
@@ -212,16 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (responseData.errors) {
                         formStatus.textContent = responseData.errors.map(error => error.message).join(", ");
                     } else {
-                        formStatus.textContent = "Unable to create support case. Please verify your details and try again.";
+                        formStatus.textContent = "Oops! There was a problem submitting your message. Please try again.";
                     }
                     formStatus.className = 'error';
                 }
             } catch (error) {
-                formStatus.textContent = "Network connection error. Please verify your connection and try submitting again.";
+                formStatus.textContent = "Network connection error. Please check your internet and try again.";
                 formStatus.className = 'error';
             } finally {
                 formStatus.style.display = 'block';
-                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
             }
         });
