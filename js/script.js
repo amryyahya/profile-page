@@ -5,31 +5,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const cursorGlow = document.getElementById('cursor-glow');
     
-    document.addEventListener('mousemove', (e) => {
-        // Position the radial gradient glow centered at the cursor
-        cursorGlow.style.left = `${e.clientX}px`;
-        cursorGlow.style.top = `${e.clientY}px`;
-    });
+    if (cursorGlow) {
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = `${e.clientX}px`;
+            cursorGlow.style.top = `${e.clientY}px`;
+        });
+    }
 
     // ==========================================================================
     // 2. Mobile Menu Toggle
     // ==========================================================================
     const mobileToggle = document.getElementById('mobile-toggle');
     const navLinks = document.getElementById('nav-links');
-    const navItems = navLinks.querySelectorAll('a');
+    const navItems = navLinks ? navLinks.querySelectorAll('a') : [];
 
-    mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    // Close mobile menu when nav link is clicked
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            navLinks.classList.remove('active');
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
-    });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 
     // ==========================================================================
     // 3. ScrollSpy & Sticky Header
@@ -38,16 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     
     window.addEventListener('scroll', () => {
-        // Sticky Header effect
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
 
-        // Active Link Scroll Spy
         let currentSectionId = '';
-        const scrollPosition = window.scrollY + 120; // offset for navbar height
+        const scrollPosition = window.scrollY + 120;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -66,16 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 4. Interactive Projects Filter
+    // 4. Interactive Projects / Stacks Filter
     // ==========================================================================
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons
             filterButtons.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
             btn.classList.add('active');
 
             const filterValue = btn.getAttribute('data-filter');
@@ -85,13 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (filterValue === 'all' || categories.includes(filterValue)) {
                     card.classList.remove('hidden');
-                    // Simple entrance animation
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(10px)';
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
-                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
                     }, 50);
                 } else {
                     card.classList.add('hidden');
@@ -101,103 +100,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 5. DevOps Interactive Terminal Mockup typing simulation
+    // 5. AWS CloudShell Interactive CLI typing simulation
     // ==========================================================================
     const terminalBody = document.getElementById('terminal-body');
-    terminalBody.innerHTML = ''; // Clear noscript content
 
-    const terminalScript = [
-        { type: 'input', text: 'whoami' },
-        { type: 'output', text: 'amryyahya' },
-        { type: 'wait', ms: 500 },
-        { type: 'input', text: 'cat stats.yaml' },
-        { type: 'output', text: `---
-engineer:
-  name: Amry Yahya
-  role: DevOps Engineer
-  location: Yogyakarta, Indonesia
-metrics:
-  ansible_automation: "Server setup time reduced by 60%"
-  gitlab_cicd_speed: "3x deployment frequency acceleration"
-  docker_compose_uptime: "99.9% availability across 20+ instances"
-  ai_data_ingest: "Indexed 215,000+ docs (Redis, Memgraph, Qdrant)"` },
-        { type: 'wait', ms: 800 },
-        { type: 'input', text: 'ansible-playbook check_infra.yml' },
-        { type: 'output', text: `PLAY [Check DevOps Environment Health] *****************************************
+    if (terminalBody) {
+        terminalBody.innerHTML = ''; // Clear noscript fallback
 
-TASK [Gathering Facts] *********************************************************
-ok: [dsi-prod-01]
-
-TASK [Check Nginx & SSL Cert Validity] *****************************************
-ok: [dsi-prod-01] => {"changed": false, "ssl_status": "Valid", "expires_in": "82 days"}
-
-TASK [Check Redis & Memgraph Cache Hit Ratios] *********************************
-ok: [dsi-prod-01] => {"changed": false, "redis_hit_ratio": "98.4%", "memgraph_status": "Connected"}
-
-TASK [Verify Telegram Alerting Channels] ***************************************
-ok: [dsi-prod-01] => {"changed": false, "channel": "UptimeKumaAlerts", "status": "ONLINE"}
-
-PLAY RECAP *********************************************************************
-dsi-prod-01                : ok=4    changed=0    unreachable=0    failed=0   ` },
-        { type: 'wait', ms: 1000 },
-        { type: 'input', text: 'echo "Ready to automate infrastructure."' },
-        { type: 'output', text: 'Ready to automate infrastructure.' },
-        { type: 'wait', ms: 2000 }
-    ];
-
-    async function runTerminalSimulation() {
-        while (true) { // Loop simulation indefinitely
-            terminalBody.innerHTML = '';
-            for (let step of terminalScript) {
-                if (step.type === 'input') {
-                    // Create input line
-                    const line = document.createElement('div');
-                    line.className = 'term-line';
-                    
-                    const prompt = document.createElement('span');
-                    prompt.className = 'term-prompt';
-                    prompt.textContent = 'guest@amryyahya:~$ ';
-                    line.appendChild(prompt);
-                    
-                    const cmdText = document.createElement('span');
-                    line.appendChild(cmdText);
-                    
-                    const caret = document.createElement('span');
-                    caret.className = 'term-caret';
-                    line.appendChild(caret);
-                    
-                    terminalBody.appendChild(line);
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-
-                    // Type command text character by character
-                    for (let i = 0; i < step.text.length; i++) {
-                        cmdText.textContent += step.text[i];
-                        await new Promise(r => setTimeout(r, 60 + Math.random() * 40));
-                    }
-                    
-                    // Remove caret from line after finishing typing
-                    caret.remove();
-                    
-                } else if (step.type === 'output') {
-                    // Create output lines
-                    const output = document.createElement('div');
-                    output.className = 'term-output';
-                    output.innerHTML = step.text.replace(/\n/g, '<br>');
-                    
-                    terminalBody.appendChild(output);
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-                    
-                } else if (step.type === 'wait') {
-                    await new Promise(r => setTimeout(r, step.ms));
-                }
-            }
+        const terminalScript = [
+            { type: 'input', text: 'aws sts get-caller-identity' },
+            { type: 'output', text: `<span class="highlight-val">{</span><br>&nbsp;&nbsp;<span class="highlight-val">"UserId":</span> "AMRY-DEVOPS-ENGINEER",<br>&nbsp;&nbsp;<span class="highlight-val">"Account":</span> "987654321012",<br>&nbsp;&nbsp;<span class="highlight-val">"Arn":</span> "arn:aws:iam::root:user/amryyahya",<br>&nbsp;&nbsp;<span class="highlight-val">"Region":</span> "ap-southeast-1 (Yogyakarta, ID)"<br><span class="highlight-val">}</span>` },
+            { type: 'wait', ms: 600 },
             
-            // Wait 5 seconds before restarting the terminal log loop
-            await new Promise(r => setTimeout(r, 5000));
-        }
-    }
+            { type: 'input', text: 'aws cloudwatch get-metric-data --metric-name HealthCheck' },
+            { type: 'output', text: `[Metrics Evaluation]:<br>- <span class="success-val">Ansible Automation:</span> 60% Server Provisioning Time Reduction<br>- <span class="success-val">GitLab CI Speed:</span> 3x Acceleration in Build & Deploy Frequency<br>- <span class="success-val">Container Uptime:</span> 99.9% Availability across 20+ Instances<br>- <span class="success-val">Data Ingestion:</span> 215,000+ AI Documents Indexed (Redis, Memgraph, Qdrant)` },
+            { type: 'wait', ms: 800 },
+            
+            { type: 'input', text: 'ansible-playbook -i production check_stack_health.yml' },
+            { type: 'output', text: `PLAY [Verify AWS Infrastructure & Container Health] ********************<br><br>TASK [Gathering Facts] *************************************************<br>ok: [dsi-prod-01]<br><br>TASK [Check Nginx & SSL Certificate Pinning] ***************************<br>ok: [dsi-prod-01] => {"ssl_status": "VALID", "mitm_protection": "ENABLED"}<br><br>TASK [Verify Telegram Alerting via Uptime Kuma] ************************<br>ok: [dsi-prod-01] => {"status": "ONLINE", "containers": 20}<br><br>PLAY RECAP *************************************************************<br>dsi-prod-01 : ok=3 changed=0 unreachable=0 failed=0` },
+            { type: 'wait', ms: 1000 },
+            
+            { type: 'input', text: 'echo "AWS Cloud & DevOps Platform Operational."' },
+            { type: 'output', text: '<span class="success-val">AWS Cloud & DevOps Platform Operational.</span>' },
+            { type: 'wait', ms: 2500 }
+        ];
 
-    runTerminalSimulation();
+        async function runTerminalSimulation() {
+            while (true) {
+                terminalBody.innerHTML = '';
+                for (let step of terminalScript) {
+                    if (step.type === 'input') {
+                        const line = document.createElement('div');
+                        line.className = 'term-line';
+                        
+                        const prompt = document.createElement('span');
+                        prompt.className = 'term-prompt';
+                        prompt.textContent = '[cloudshell-user@aws ~]$ ';
+                        line.appendChild(prompt);
+                        
+                        const cmdText = document.createElement('span');
+                        line.appendChild(cmdText);
+                        
+                        const caret = document.createElement('span');
+                        caret.className = 'term-caret';
+                        line.appendChild(caret);
+                        
+                        terminalBody.appendChild(line);
+                        terminalBody.scrollTop = terminalBody.scrollHeight;
+
+                        for (let i = 0; i < step.text.length; i++) {
+                            cmdText.textContent += step.text[i];
+                            await new Promise(r => setTimeout(r, 45 + Math.random() * 35));
+                        }
+                        
+                        caret.remove();
+                        
+                    } else if (step.type === 'output') {
+                        const output = document.createElement('div');
+                        output.className = 'term-output';
+                        output.innerHTML = step.text;
+                        
+                        terminalBody.appendChild(output);
+                        terminalBody.scrollTop = terminalBody.scrollHeight;
+                        
+                    } else if (step.type === 'wait') {
+                        await new Promise(r => setTimeout(r, step.ms));
+                    }
+                }
+                
+                await new Promise(r => setTimeout(r, 4000));
+            }
+        }
+
+        runTerminalSimulation();
+    }
 
     // ==========================================================================
     // 6. Formspree Contact Form Submission Handling
@@ -205,15 +181,15 @@ dsi-prod-01                : ok=4    changed=0    unreachable=0    failed=0   ` 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
-    if (contactForm) {
+    if (contactForm && formStatus) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             formStatus.className = '';
             formStatus.style.display = 'none';
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending Message...';
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.textContent = 'Submitting Support Case...';
             submitBtn.disabled = true;
 
             const data = new FormData(contactForm);
@@ -228,7 +204,7 @@ dsi-prod-01                : ok=4    changed=0    unreachable=0    failed=0   ` 
                 });
                 
                 if (response.ok) {
-                    formStatus.textContent = "Thank you! Your message has been sent successfully. I will get back to you shortly.";
+                    formStatus.textContent = "Support Case Created Successfully! Thank you for reaching out. I will respond to your case shortly.";
                     formStatus.className = 'success';
                     contactForm.reset();
                 } else {
@@ -236,16 +212,16 @@ dsi-prod-01                : ok=4    changed=0    unreachable=0    failed=0   ` 
                     if (responseData.errors) {
                         formStatus.textContent = responseData.errors.map(error => error.message).join(", ");
                     } else {
-                        formStatus.textContent = "Oops! There was a problem submitting your form. Please try again.";
+                        formStatus.textContent = "Unable to create support case. Please verify your details and try again.";
                     }
                     formStatus.className = 'error';
                 }
             } catch (error) {
-                formStatus.textContent = "Oops! Network error. Please verify your connection and try again.";
+                formStatus.textContent = "Network connection error. Please verify your connection and try submitting again.";
                 formStatus.className = 'error';
             } finally {
                 formStatus.style.display = 'block';
-                submitBtn.textContent = originalBtnText;
+                submitBtn.innerHTML = originalBtnHtml;
                 submitBtn.disabled = false;
             }
         });

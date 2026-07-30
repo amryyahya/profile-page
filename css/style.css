@@ -1,43 +1,46 @@
 /* ==========================================================================
-   Design System & Base Theme Variables
+   AWS Management Console & Cloudscape Design System Variables
    ========================================================================== */
 :root {
-    /* Color Palette */
-    --bg-darker: #050811;
-    --bg-dark: #0a0e1a;
-    --bg-card: rgba(13, 21, 39, 0.45);
-    --bg-card-hover: rgba(20, 32, 59, 0.6);
-    --border-color: rgba(59, 130, 246, 0.1);
-    --border-hover: rgba(59, 130, 246, 0.3);
+    /* AWS Brand Palette */
+    --aws-squid-ink: #0f1b2a;       /* Deep main background */
+    --aws-console-navy: #232f3e;   /* AWS Header & Navbar Navy */
+    --aws-card-bg: #162334;        /* AWS Console Card Background */
+    --aws-card-hover: #1c2c42;     /* Card Hover State */
+    --aws-nav-sub: #192537;        /* Console Sub-header / Input BG */
     
-    /* Accents & Gradients */
-    --accent-blue: #3b82f6;
-    --accent-teal: #10b981;
-    --accent-violet: #8b5cf6;
+    /* AWS Accents & Status Colors */
+    --aws-orange: #ff9900;         /* AWS Brand Orange */
+    --aws-orange-hover: #ec7211;   /* Primary Button Hover */
+    --aws-blue: #0073bb;           /* AWS Link / Action Blue */
+    --aws-blue-cyan: #00a4e4;      /* Secondary AWS Blue Cyan */
+    --aws-green: #2fb044;          /* AWS Health / Success Green */
+    --aws-green-bg: rgba(47, 176, 68, 0.12);
+    --aws-amber: #f29d12;          /* AWS Warning / Warning State */
     
-    --grad-primary: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
-    --grad-cyber: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
-    --grad-text: linear-gradient(to right, #3b82f6, #8b5cf6, #10b981);
-    
+    /* Borders & Dividers */
+    --aws-border: #2c3e55;         /* AWS Border Gray-Blue */
+    --aws-border-light: #3d526e;   /* Hover Border */
+    --aws-border-active: #ff9900;  /* Active Selection Border */
+
     /* Text Colors */
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --text-secondary: #aab7c4;
+    --text-muted: #6c7d93;
     
     /* Font Stacks */
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', "Fira Code", Monaco, monospace;
     
-    /* Global Transitions & Layout */
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
-    --shadow-glow-strong: 0 0 35px rgba(59, 130, 246, 0.3);
-    --shadow-teal-glow: 0 0 20px rgba(16, 185, 129, 0.15);
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --navbar-height: 80px;
+    /* Layout & Transitions */
+    --transition-fast: all 0.15s ease-in-out;
+    --transition-normal: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+    --shadow-orange-glow: 0 0 20px rgba(255, 153, 0, 0.25);
+    --radius-sm: 4px;              /* AWS Console sharp clean corners */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --navbar-height: 70px;
 }
 
 /* ==========================================================================
@@ -55,37 +58,41 @@ html {
 }
 
 body {
-    background-color: var(--bg-darker);
+    background-color: var(--aws-squid-ink);
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 153, 0, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(0, 164, 228, 0.04) 0%, transparent 45%);
 }
 
-/* Custom Scrollbar */
+/* AWS Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--bg-darker);
+    background: var(--aws-squid-ink);
 }
 ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #23344a;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: var(--aws-orange);
 }
 
-/* Background Mouse Cursor Glow Effect */
+/* Background Spotlight Cursor Glow Effect */
 .cursor-glow {
     position: fixed;
     top: 0;
     left: 0;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 153, 0, 0.07) 0%, rgba(0, 115, 187, 0.02) 60%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
@@ -93,10 +100,10 @@ body {
     transition: width 0.3s ease, height 0.3s ease;
 }
 
-/* Helper Utilities */
+/* Container & Typography Helpers */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 24px;
     position: relative;
@@ -104,17 +111,151 @@ body {
 }
 
 a {
-    color: inherit;
+    color: var(--aws-blue-cyan);
     text-decoration: none;
     transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--aws-orange);
 }
 
 li {
     list-style: none;
 }
 
+/* Section Common Headers */
+.section-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-header.align-left {
+    text-align: left;
+}
+
+.section-header h2 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-header h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background-color: var(--aws-orange);
+    border-radius: 2px;
+}
+
+.section-header .section-divider {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--aws-orange), var(--aws-blue-cyan));
+    margin: 12px auto 16px;
+    border-radius: 2px;
+}
+
+.section-header.align-left .section-divider {
+    margin: 12px 0 16px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.section-header.align-left p {
+    margin: 0;
+}
+
+/* AWS Console Badges & Pills */
+.aws-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-mono);
+}
+
+.aws-badge-orange {
+    background-color: rgba(255, 153, 0, 0.15);
+    color: var(--aws-orange);
+    border: 1px solid rgba(255, 153, 0, 0.4);
+}
+
+.aws-badge-green {
+    background-color: var(--aws-green-bg);
+    color: var(--aws-green);
+    border: 1px solid rgba(47, 176, 68, 0.4);
+}
+
+.aws-badge-blue {
+    background-color: rgba(0, 164, 228, 0.15);
+    color: var(--aws-blue-cyan);
+    border: 1px solid rgba(0, 164, 228, 0.4);
+}
+
+/* Buttons System - AWS Style */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+    font-family: var(--font-sans);
+}
+
+.btn-primary {
+    background-color: var(--aws-orange);
+    color: #0f1b2a;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--aws-orange-hover);
+    color: #0f1b2a;
+    box-shadow: var(--shadow-orange-glow);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: rgba(35, 47, 62, 0.8);
+    color: var(--text-primary);
+    border: 1px solid var(--aws-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--aws-card-hover);
+    border-color: var(--aws-border-light);
+    color: var(--aws-orange);
+    transform: translateY(-1px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
 /* ==========================================================================
-   Navbar & Floating Navigation
+   AWS Management Console Header & Navigation Bar
    ========================================================================== */
 .navbar {
     position: fixed;
@@ -122,18 +263,16 @@ li {
     left: 0;
     width: 100%;
     height: var(--navbar-height);
-    background: rgba(5, 8, 17, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--aws-console-navy);
+    border-bottom: 2px solid #162436;
     z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
     transition: var(--transition-normal);
 }
 
 .navbar.scrolled {
-    height: 70px;
-    background: rgba(5, 8, 17, 0.85);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    height: 64px;
+    border-bottom-color: var(--aws-orange);
 }
 
 .nav-container {
@@ -141,47 +280,123 @@ li {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px;
+    gap: 20px;
 }
 
+/* Logo Brand (AWS Style) */
 .logo {
-    font-size: 1.4rem;
-    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: -0.5px;
-    font-family: var(--font-sans);
+    letter-spacing: -0.3px;
+}
+
+.aws-logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #ff9900 0%, #ec7211 100%);
+    border-radius: var(--radius-sm);
+    color: #0f1b2a;
+    font-weight: 900;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.4);
 }
 
 .logo-accent {
-    color: var(--accent-blue);
+    color: var(--aws-orange);
     font-family: var(--font-mono);
 }
 
+/* Console Search Bar Mockup */
+.aws-console-search {
+    flex: 1;
+    max-width: 380px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.aws-search-input {
+    width: 100%;
+    background-color: var(--aws-nav-sub);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-sm);
+    padding: 7px 12px 7px 34px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.aws-search-input:focus {
+    border-color: var(--aws-orange);
+    background-color: #121e2d;
+    box-shadow: 0 0 0 1px var(--aws-orange);
+}
+
+.aws-search-icon {
+    position: absolute;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.aws-search-shortcut {
+    position: absolute;
+    right: 8px;
+    font-size: 0.7rem;
+    background-color: var(--aws-console-navy);
+    border: 1px solid var(--aws-border);
+    color: var(--text-muted);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+}
+
+/* Navigation Links */
 .nav-links {
     display: flex;
-    gap: 32px;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-links a {
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-secondary);
     position: relative;
-    padding: 8px 0;
+    padding: 8px 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -16px;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--grad-primary);
-    transition: var(--transition-normal);
-    border-radius: 2px;
+    height: 3px;
+    background-color: var(--aws-orange);
+    transition: var(--transition-fast);
+    border-radius: 2px 2px 0 0;
+}
+
+.navbar.scrolled .nav-links a::after {
+    bottom: -13px;
 }
 
 .nav-links a:hover,
@@ -193,112 +408,160 @@ li {
     width: 100%;
 }
 
+.nav-links a.active {
+    color: var(--aws-orange);
+}
+
+/* AWS Header Controls (Region & Account Badge) */
+.aws-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.aws-region-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--aws-nav-sub);
+    border: 1px solid var(--aws-border);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.aws-region-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--aws-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--aws-green);
+}
+
+.aws-account-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 153, 0, 0.12);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--aws-orange);
+}
+
 /* Mobile Hamburger Toggle */
 .mobile-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
+    width: 26px;
     height: 18px;
     background: transparent;
     border: none;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .mobile-toggle .bar {
     width: 100%;
     height: 2px;
     background-color: var(--text-primary);
-    border-radius: 2px;
-    transition: var(--transition-fast);
+    transition: var(--transition-normal);
+}
+
+.mobile-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--aws-orange);
+}
+.mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.mobile-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--aws-orange);
 }
 
 /* ==========================================================================
-   Hero Section & Interactive Terminal
+   Hero Section (AWS Cloud Console Dashboard View)
    ========================================================================== */
 .hero-section {
+    padding: 130px 0 80px;
     position: relative;
-    padding-top: calc(var(--navbar-height) + 60px);
-    padding-bottom: 80px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
 }
 
 .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
+    gap: 40px;
     align-items: center;
 }
 
-.badge-devops {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(59, 130, 246, 0.08);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
+.hero-console-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .hero-title {
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-size: 3.2rem;
     font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    background: var(--grad-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.hero-title .highlight {
+    color: var(--aws-orange);
+    position: relative;
+    display: inline-block;
 }
 
 .hero-subtitle {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.3;
-    margin-bottom: 24px;
+    color: var(--aws-blue-cyan);
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
 .hero-description {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: var(--text-secondary);
-    margin-bottom: 32px;
-    max-width: 580px;
+    margin-bottom: 28px;
+    line-height: 1.7;
 }
 
 .social-links {
     display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 14px;
+    margin-bottom: 32px;
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid var(--border-color);
+    width: 42px;
+    height: 42px;
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-sm);
     color: var(--text-secondary);
+    transition: var(--transition-fast);
 }
 
 .social-links a:hover {
-    color: var(--text-primary);
-    border-color: var(--accent-blue);
-    background: rgba(59, 130, 246, 0.1);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-glow);
+    background-color: var(--aws-console-navy);
+    border-color: var(--aws-orange);
+    color: var(--aws-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
 }
 
 .social-links svg {
@@ -309,63 +572,26 @@ li {
 .hero-actions {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
-/* Button Classes */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 28px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: var(--transition-fast);
-}
-
-.btn-primary {
-    background: var(--grad-primary);
-    color: var(--bg-darker);
-    border: none;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
-}
-
-.btn-secondary {
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-    background: rgba(30, 41, 59, 0.7);
-    border-color: var(--text-secondary);
-    transform: translateY(-2px);
-}
-
-/* Interactive DevOps Terminal UI */
+/* AWS CloudShell Interactive Terminal Mockup */
 .terminal-container {
-    background: #060913;
-    border: 1px solid #1e293b;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+    background-color: #121b27;
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card), var(--shadow-orange-glow);
     overflow: hidden;
-    height: 380px;
-    display: flex;
-    flex-direction: column;
+    font-family: var(--font-mono);
 }
 
 .terminal-header {
-    background: #0f172a;
-    padding: 12px 20px;
+    background-color: var(--aws-console-navy);
+    padding: 10px 16px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #1e293b;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--aws-border);
 }
 
 .terminal-buttons {
@@ -374,221 +600,236 @@ li {
 }
 
 .btn-dot {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
 }
-
-.btn-dot.close { background: #ef4444; }
-.btn-dot.minimize { background: #f59e0b; }
-.btn-dot.expand { background: #10b981; }
+.btn-dot.close { background-color: #ff5f56; }
+.btn-dot.minimize { background-color: #ffbd2e; }
+.btn-dot.expand { background-color: #27c93f; }
 
 .terminal-title {
-    margin-left: 20px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.terminal-title svg {
+    width: 14px;
+    height: 14px;
+    color: var(--aws-orange);
 }
 
 .terminal-body {
-    flex-grow: 1;
-    padding: 24px;
-    font-family: var(--font-mono);
-    font-size: 0.88rem;
-    color: var(--text-primary);
+    padding: 18px 20px;
+    min-height: 290px;
+    max-height: 340px;
     overflow-y: auto;
-    line-height: 1.7;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: #e2e8f0;
 }
 
 .term-line {
-    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    word-break: break-all;
 }
 
 .term-prompt {
-    color: var(--accent-teal);
+    color: var(--aws-green);
+    margin-right: 8px;
     font-weight: 700;
-}
-
-.term-output {
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    white-space: pre-line;
-}
-
-.term-output-highlight {
-    color: var(--text-primary);
-    font-weight: bold;
+    user-select: none;
+    white-space: nowrap;
 }
 
 .term-caret {
     display: inline-block;
     width: 8px;
-    height: 15px;
-    background: var(--text-primary);
-    margin-left: 4px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
+    height: 16px;
+    background-color: var(--aws-orange);
+    margin-left: 2px;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
+    0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
 
-/* ==========================================================================
-   Section Headers & Dividers
-   ========================================================================== */
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header.align-left {
-    text-align: left;
-    margin-bottom: 40px;
-}
-
-.section-header h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
+.term-output {
+    color: #a0aec0;
     margin-bottom: 12px;
-    letter-spacing: -0.5px;
+    padding-left: 4px;
+    border-left: 2px solid var(--aws-border);
 }
 
-.section-divider {
-    width: 60px;
-    height: 4px;
-    background: var(--grad-primary);
-    border-radius: 2px;
-    margin: 0 auto 20px;
+.term-output .highlight-val {
+    color: var(--aws-orange);
+    font-weight: 600;
 }
 
-.section-header.align-left .section-divider {
-    margin: 0 0 20px;
-}
-
-.section-header p {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.section-header.align-left p {
-    margin: 0;
+.term-output .success-val {
+    color: var(--aws-green);
+    font-weight: 600;
 }
 
 /* ==========================================================================
-   Key Performance Metrics Section
+   AWS CloudWatch Metrics Dashboard Section
    ========================================================================== */
 .metrics-section {
-    padding: 100px 0;
-    border-top: 1px solid var(--border-color);
+    padding: 70px 0;
+    background-color: rgba(22, 35, 52, 0.4);
+    border-top: 1px solid var(--aws-border);
+    border-bottom: 1px solid var(--aws-border);
 }
 
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
 
 .metric-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 36px 28px;
-    text-align: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
     transition: var(--transition-normal);
 }
 
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--aws-orange), var(--aws-blue-cyan));
+    opacity: 0.7;
+    transition: var(--transition-fast);
+}
+
 .metric-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-hover);
-    background: var(--bg-card-hover);
-    box-shadow: var(--shadow-glow);
+    background-color: var(--aws-card-hover);
+    border-color: var(--aws-orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+}
+
+.metric-card:hover::before {
+    opacity: 1;
+    height: 4px;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.metric-status-pulse {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--aws-green);
+    font-family: var(--font-mono);
+}
+
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--aws-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--aws-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(47, 176, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(47, 176, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(47, 176, 68, 0); }
 }
 
 .metric-value {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 8px;
-    background: var(--grad-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--aws-orange);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    font-family: var(--font-mono);
 }
 
 .metric-label {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .metric-desc {
     font-size: 0.88rem;
     color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   Skills Section (DevOps Highlight)
+   Core Expertise (AWS Service Catalog Skill Cards)
    ========================================================================== */
 .skills-section {
-    padding: 100px 0;
-    background-color: var(--bg-dark);
+    padding: 90px 0;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
 }
 
 .skills-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
     transition: var(--transition-normal);
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Highlight DevOps & SysAdmin Card */
 .skills-card.highlight-card {
-    border-color: rgba(59, 130, 246, 0.35);
-    background: rgba(13, 21, 39, 0.6);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.05);
-}
-
-.skills-card.highlight-card:hover {
-    border-color: rgba(59, 130, 246, 0.6);
-    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15);
+    border-color: rgba(255, 153, 0, 0.5);
+    background-color: #192a40;
+    grid-column: span 1;
 }
 
 .skills-card:hover {
+    border-color: var(--aws-orange);
     transform: translateY(-4px);
-    border-color: var(--border-hover);
+    box-shadow: var(--shadow-card);
 }
 
 .skills-card-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background: rgba(30, 41, 59, 0.5);
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 153, 0, 0.12);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent-blue);
-    margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-}
-
-.skills-card.highlight-card .skills-card-icon {
-    background: rgba(59, 130, 246, 0.15);
-    color: var(--accent-blue);
-    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--aws-orange);
+    margin-bottom: 18px;
 }
 
 .skills-card-icon svg {
@@ -599,74 +840,69 @@ li {
 .skills-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: var(--text-primary);
+    margin-bottom: 16px;
 }
 
 .skills-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    margin-top: auto;
 }
 
 .skill-tag {
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 6px 12px;
-    background: rgba(30, 41, 59, 0.35);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    background-color: var(--aws-nav-sub);
     color: var(--text-secondary);
+    border: 1px solid var(--aws-border);
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.84rem;
+    font-weight: 500;
     transition: var(--transition-fast);
 }
 
-.skills-card.highlight-card .skill-tag {
-    background: rgba(59, 130, 246, 0.05);
-    border-color: rgba(59, 130, 246, 0.15);
-    color: var(--text-primary);
-}
-
-.skills-card.highlight-card .skill-tag:hover {
-    background: var(--accent-blue);
-    color: var(--bg-darker);
-    border-color: var(--accent-blue);
-    box-shadow: var(--shadow-glow);
-}
-
 .skill-tag:hover {
-    color: var(--text-primary);
-    border-color: var(--accent-teal);
-    background: rgba(16, 185, 129, 0.08);
+    border-color: var(--aws-orange);
+    color: var(--aws-orange);
+    background-color: rgba(255, 153, 0, 0.08);
+}
+
+.skills-card.highlight-card .skill-tag {
+    border-color: rgba(255, 153, 0, 0.3);
+    color: #e2e8f0;
 }
 
 /* ==========================================================================
-   Experience Timeline Section
+   Experience Timeline (AWS CloudTrail Log Aesthetic)
    ========================================================================== */
 .experience-section {
-    padding: 100px 0;
+    padding: 90px 0;
+    background-color: rgba(22, 35, 52, 0.3);
+    border-top: 1px solid var(--aws-border);
+    border-bottom: 1px solid var(--aws-border);
 }
 
 .timeline {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 0;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 31px;
-    width: 2px;
+    left: 20px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--accent-blue) 0%, var(--border-color) 80%, transparent 100%);
+    width: 2px;
+    background: linear-gradient(180deg, var(--aws-orange) 0%, var(--aws-blue-cyan) 100%);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 50px;
-    padding-left: 80px;
+    padding-left: 60px;
+    margin-bottom: 44px;
 }
 
 .timeline-item:last-child {
@@ -675,69 +911,63 @@ li {
 
 .timeline-dot {
     position: absolute;
-    left: 20px;
-    top: 5px;
-    width: 24px;
-    height: 24px;
+    left: 12px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: var(--bg-darker);
-    border: 4px solid var(--accent-blue);
-    box-shadow: var(--shadow-glow-strong);
+    background-color: var(--aws-squid-ink);
+    border: 3px solid var(--aws-orange);
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
     z-index: 2;
-    transition: var(--transition-normal);
-}
-
-.timeline-item:hover .timeline-dot {
-    background: var(--accent-teal);
-    border-color: var(--text-primary);
 }
 
 .timeline-date {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--accent-blue);
-    margin-bottom: 8px;
     display: inline-block;
+    padding: 3px 10px;
+    background-color: rgba(255, 153, 0, 0.12);
+    color: var(--aws-orange);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    margin-bottom: 12px;
 }
 
 .timeline-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 28px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
     transition: var(--transition-normal);
 }
 
-.timeline-item:hover .timeline-content {
-    border-color: var(--border-hover);
-    background: var(--bg-card-hover);
+.timeline-content:hover {
+    border-color: var(--aws-orange);
+    box-shadow: var(--shadow-card);
+    transform: translateX(4px);
 }
 
 .job-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 4px;
 }
 
 .job-header h3 {
     font-size: 1.3rem;
     font-weight: 700;
+    color: var(--text-primary);
 }
 
-.company {
-    font-size: 0.95rem;
+.job-header .company {
+    color: var(--aws-blue-cyan);
     font-weight: 600;
-    color: var(--accent-teal);
-    background: rgba(16, 185, 129, 0.08);
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-size: 1rem;
 }
 
 .job-meta {
@@ -747,18 +977,28 @@ li {
 }
 
 .job-duties {
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .job-duties li {
-    list-style-type: disc;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    position: relative;
+    padding-left: 20px;
     margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-.job-duties li strong {
+.job-duties li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.65rem;
+    color: var(--aws-orange);
+}
+
+.job-duties strong {
     color: var(--text-primary);
 }
 
@@ -769,76 +1009,71 @@ li {
 }
 
 .job-tags .tag {
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: #1e293b;
-    padding: 4px 10px;
-    border-radius: 6px;
+    background-color: var(--aws-nav-sub);
+    border: 1px solid var(--aws-border);
     color: var(--text-secondary);
-    border: 1px solid transparent;
-}
-
-.timeline-item:hover .job-tags .tag {
-    border-color: var(--border-color);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
 }
 
 /* ==========================================================================
-   Projects Grid & Filters
+   Featured Projects (AWS CloudFormation Stack Cards)
    ========================================================================== */
 .projects-section {
-    padding: 100px 0;
-    background-color: var(--bg-dark);
+    padding: 90px 0;
 }
 
 .project-filters {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
 }
 
 .filter-btn {
-    background: rgba(30, 41, 59, 0.4);
-    border: 1px solid var(--border-color);
+    background-color: var(--aws-card-bg);
     color: var(--text-secondary);
-    padding: 8px 20px;
+    border: 1px solid var(--aws-border);
+    padding: 9px 18px;
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
     font-weight: 600;
-    border-radius: 30px;
     cursor: pointer;
     transition: var(--transition-fast);
+    font-family: var(--font-sans);
 }
 
 .filter-btn:hover {
     color: var(--text-primary);
-    border-color: var(--text-muted);
+    border-color: var(--aws-orange);
 }
 
 .filter-btn.active {
-    background: var(--grad-primary);
-    color: var(--bg-darker);
-    border-color: transparent;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+    background-color: var(--aws-orange);
+    color: #0f1b2a;
+    border-color: var(--aws-orange);
+    box-shadow: var(--shadow-orange-glow);
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
 }
 
 .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    height: 100%;
     transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
 }
 
 .project-card.hidden {
@@ -846,9 +1081,9 @@ li {
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-glow);
+    border-color: var(--aws-orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card), var(--shadow-orange-glow);
 }
 
 .project-card-header {
@@ -856,86 +1091,101 @@ li {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.project-tag {
-    font-size: 0.8rem;
+.project-stack-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
     font-weight: 700;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-family: var(--font-mono);
+    background-color: var(--aws-green-bg);
+    color: var(--aws-green);
+    border: 1px solid rgba(47, 176, 68, 0.4);
 }
 
 .project-date {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
+    font-family: var(--font-mono);
 }
 
 .project-card h3 {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 700;
+    color: var(--text-primary);
     margin-bottom: 4px;
 }
 
 .project-association {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--accent-teal);
-    margin-bottom: 16px;
+    color: var(--aws-blue-cyan);
+    margin-bottom: 14px;
 }
 
 .project-desc {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 24px;
-    flex-grow: 1;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-top: auto;
+    margin-bottom: 22px;
 }
 
 .project-tech span {
+    background-color: var(--aws-nav-sub);
+    border: 1px solid var(--aws-border);
+    color: var(--aws-orange);
+    padding: 3px 9px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    background: rgba(30, 41, 59, 0.6);
-    padding: 3px 8px;
-    border-radius: 4px;
-    color: var(--text-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .project-links {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--aws-border);
 }
 
 .proj-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .project-link-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--accent-blue);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--aws-orange);
+    border: 1px solid rgba(255, 153, 0, 0.4);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 153, 0, 0.08);
+    transition: var(--transition-fast);
 }
 
 .project-link-btn:hover {
-    color: var(--text-primary);
+    background-color: var(--aws-orange);
+    color: #0f1b2a;
+    border-color: var(--aws-orange);
 }
 
 .project-link-btn svg {
@@ -944,45 +1194,40 @@ li {
 }
 
 /* ==========================================================================
-   Education & Certifications Section
+   Education & Certifications Section (AWS Credential Manager)
    ========================================================================== */
 .education-certs-section {
-    padding: 100px 0;
+    padding: 90px 0;
+    background-color: rgba(22, 35, 52, 0.3);
+    border-top: 1px solid var(--aws-border);
+    border-bottom: 1px solid var(--aws-border);
 }
 
 .edu-certs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 40px;
 }
 
 .edu-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 32px;
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
     display: flex;
-    gap: 24px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: var(--transition-normal);
-}
-
-.edu-card:hover {
-    border-color: var(--border-hover);
-    background: var(--bg-card-hover);
+    gap: 20px;
 }
 
 .edu-icon {
-    width: 52px;
-    height: 52px;
-    background: rgba(59, 130, 246, 0.1);
-    color: var(--accent-blue);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: var(--radius-md);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 164, 228, 0.12);
+    border: 1px solid rgba(0, 164, 228, 0.3);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--aws-blue-cyan);
     flex-shrink: 0;
 }
 
@@ -994,57 +1239,49 @@ li {
 .edu-details h3 {
     font-size: 1.25rem;
     font-weight: 700;
+    color: var(--text-primary);
     margin-bottom: 4px;
 }
 
 .edu-details h4 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 6px;
+    font-size: 1rem;
+    color: var(--aws-blue-cyan);
+    margin-bottom: 8px;
 }
 
 .edu-meta {
     font-size: 0.85rem;
     color: var(--text-muted);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
 }
 
 .edu-grade {
     font-size: 0.95rem;
-    color: var(--accent-teal);
-    margin-bottom: 16px;
+    color: var(--aws-green);
+    font-weight: 600;
+    margin-bottom: 14px;
 }
 
 .edu-coursework h5 {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
 }
 
 .edu-coursework ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .edu-coursework li {
-    font-size: 0.85rem;
+    background-color: var(--aws-nav-sub);
+    border: 1px solid var(--aws-border);
     color: var(--text-secondary);
-    position: relative;
-    padding-left: 14px;
-}
-
-.edu-coursework li::before {
-    content: '▪';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    color: var(--accent-blue);
-    font-size: 8px;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
 }
 
 .certs-list {
@@ -1054,51 +1291,36 @@ li {
 }
 
 .cert-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px;
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
     display: flex;
-    gap: 20px;
     align-items: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    gap: 18px;
     transition: var(--transition-normal);
 }
 
-.cert-item:hover {
-    border-color: var(--border-hover);
-    background: var(--bg-card-hover);
-}
-
-/* Highlight Cert: Google ACE */
 .cert-item.highlight-cert {
-    border-color: rgba(16, 185, 129, 0.25);
-    background: rgba(16, 185, 129, 0.02);
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.02);
+    border-color: rgba(255, 153, 0, 0.5);
+    background-color: #1a293d;
 }
 
-.cert-item.highlight-cert:hover {
-    border-color: rgba(16, 185, 129, 0.5);
-    box-shadow: var(--shadow-teal-glow);
-}
-
-.cert-item.highlight-cert .cert-icon {
-    background: rgba(16, 185, 129, 0.1);
-    color: var(--accent-teal);
-    border-color: rgba(16, 185, 129, 0.2);
+.cert-item:hover {
+    border-color: var(--aws-orange);
+    transform: translateX(4px);
 }
 
 .cert-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(30, 41, 59, 0.5);
-    color: var(--accent-blue);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 153, 0, 0.12);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--aws-orange);
     flex-shrink: 0;
 }
 
@@ -1107,117 +1329,110 @@ li {
     height: 22px;
 }
 
+.cert-details {
+    flex: 1;
+}
+
 .cert-details h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    color: var(--text-primary);
+    margin-bottom: 2px;
 }
 
 .cert-issuer {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
 }
 
 .cert-badge-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--accent-blue);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--aws-orange);
 }
 
-.cert-badge-link:hover {
-    color: var(--text-primary);
-}
-
-.cert-badge-link svg.small-icon {
-    width: 11px;
-    height: 11px;
-}
-
-.cert-item.highlight-cert .cert-badge-link {
-    color: var(--accent-teal);
-}
-
-.cert-item.highlight-cert .cert-badge-link:hover {
-    color: var(--text-primary);
+.small-icon {
+    width: 12px;
+    height: 12px;
 }
 
 /* ==========================================================================
-   Contact Section & Custom Input Form
+   Contact Section (AWS Support Case Console)
    ========================================================================== */
 .contact-section {
-    padding: 100px 0;
-    background-color: var(--bg-dark);
+    padding: 90px 0;
 }
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 48px;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .info-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px;
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    gap: 16px;
+    transition: var(--transition-fast);
+}
+
+.info-card:hover {
+    border-color: var(--aws-orange);
+    transform: translateY(-2px);
 }
 
 .info-icon {
     width: 44px;
     height: 44px;
-    background: rgba(59, 130, 246, 0.1);
-    color: var(--accent-blue);
-    border-radius: 50%;
+    background-color: rgba(255, 153, 0, 0.12);
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--aws-orange);
     flex-shrink: 0;
 }
 
 .info-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
 
 .info-card h4 {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     margin-bottom: 2px;
+    font-family: var(--font-mono);
 }
 
 .info-card p {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
-.info-card p a:hover {
-    color: var(--accent-blue);
-}
-
+/* Contact Form - AWS Support Case Style */
 .contact-form-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 40px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--aws-card-bg);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    box-shadow: var(--shadow-card);
 }
 
 .contact-form {
@@ -1242,207 +1457,158 @@ li {
     font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .form-group input,
 .form-group textarea {
-    background: rgba(30, 41, 59, 0.35);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 12px 16px;
+    background-color: var(--aws-squid-ink);
+    border: 1px solid var(--aws-border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
     color: var(--text-primary);
-    font-family: var(--font-sans);
     font-size: 0.95rem;
+    font-family: var(--font-sans);
+    outline: none;
     transition: var(--transition-fast);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-blue);
-    background: rgba(30, 41, 59, 0.6);
-    box-shadow: var(--shadow-glow);
-}
-
-.btn-block {
-    width: 100%;
+    border-color: var(--aws-orange);
+    box-shadow: 0 0 0 1px var(--aws-orange);
 }
 
 #form-status {
     margin-top: 16px;
     padding: 12px;
-    border-radius: var(--radius-md);
-    font-size: 0.92rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
     display: none;
 }
 
 #form-status.success {
+    background-color: var(--aws-green-bg);
+    color: var(--aws-green);
+    border: 1px solid rgba(47, 176, 68, 0.4);
     display: block;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    color: var(--accent-teal);
 }
 
 #form-status.error {
+    background-color: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.4);
     display: block;
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    color: #f87171;
 }
 
 /* ==========================================================================
-   Footer
+   AWS Footer Console
    ========================================================================== */
 .footer {
-    border-top: 1px solid var(--border-color);
-    padding: 40px 0;
-    background-color: var(--bg-darker);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer p {
+    background-color: var(--aws-console-navy);
+    border-top: 1px solid var(--aws-border);
+    padding: 30px 0;
+    text-align: center;
     color: var(--text-muted);
     font-size: 0.88rem;
 }
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .footer-meta {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
     display: flex;
     align-items: center;
+    gap: 12px;
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
 }
 
 .dot-separator {
-    margin: 0 10px;
-    color: var(--border-color);
+    color: var(--aws-orange);
 }
 
 /* ==========================================================================
-   Responsive Design Adjustments
+   Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 992px) {
-    .hero-grid {
+@media (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
     }
-    
-    .terminal-container {
-        max-width: 600px;
-        margin: 0 auto;
-        width: 100%;
-    }
-    
+
     .edu-certs-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
     }
     
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
     }
 }
 
 @media (max-width: 768px) {
-    :root {
-        --navbar-height: 70px;
+    .aws-console-search {
+        display: none;
     }
-    
-    .navbar {
-        height: var(--navbar-height);
+
+    .aws-region-pill {
+        display: none;
     }
-    
+
     .mobile-toggle {
         display: flex;
     }
-    
+
     .nav-links {
         position: fixed;
         top: var(--navbar-height);
-        left: 0;
-        width: 100%;
+        right: -100%;
+        width: 280px;
         height: calc(100vh - var(--navbar-height));
-        background: rgba(5, 8, 17, 0.98);
-        backdrop-filter: blur(20px);
+        background-color: var(--aws-console-navy);
+        border-left: 1px solid var(--aws-border);
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        transform: translateY(-120%);
-        transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-        z-index: 999;
-        border-top: 1px solid var(--border-color);
+        padding: 30px 24px;
+        gap: 20px;
+        transition: var(--transition-normal);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
-    
+
     .nav-links.active {
-        transform: translateY(0);
+        right: 0;
     }
-    
-    .nav-links a {
-        font-size: 1.3rem;
+
+    .hero-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .mobile-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+
+    .hero-title {
+        font-size: 2.4rem;
     }
-    
-    .mobile-toggle.active .bar:nth-child(2) {
-        opacity: 0;
+
+    .skills-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .mobile-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .timeline::before {
-        left: 21px;
-    }
-    
-    .timeline-item {
-        padding-left: 50px;
-    }
-    
-    .timeline-dot {
-        left: 10px;
-    }
-    
-    .edu-card {
-        flex-direction: column;
-        gap: 16px;
-    }
-    
+
     .form-row {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .hero-actions .btn {
-        width: 100%;
-    }
-    
-    .edu-coursework ul {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-form-container {
-        padding: 24px;
-    }
-    
-    .metric-value {
-        font-size: 2.8rem;
     }
 }
